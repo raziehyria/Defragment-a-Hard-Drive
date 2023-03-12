@@ -24,25 +24,25 @@ sectors = ['A', 'B', 'B', '', 'D', '', 'X', 'X', '', 'E', 'F', 'G', '', 'H', 'H'
 print("Welcome to the sector de-fragmentation program.")
 print("This program will move all file pieces together so that all sectors for the files are contiguous.\n")
 
-#Display the BEFORE picture of all the arrays segments. Make this look neat and easy to follow.
-print("BEFORE defragmentation:")
-print("0                                                                               19")
+#Display the BEFORE picture of all the arrays segments. 
+print("BEFORE defragmentation:") # pulls the first 20 items from the sectors and displays them
+print("0                                                                               19") # manually print bounds (header) of table
 before_table = [sectors[i:i+20] for i in range(0, len(sectors), 20)]
 print(tabulate(before_table, tablefmt='grid'))
 print("20                                                                              39")
 
 #Do the de-fragmentation process (on the ' ' spaces).
-next_empty_sector = sectors.index('')
+next_empty_sector = sectors.index('') # gives us the index of the first empty sector
 for i in range(next_empty_sector, MAX_SECTORS):
-    if sectors[i] != '':
-        sectors[next_empty_sector], sectors[i] = sectors[i], sectors[next_empty_sector]
-        next_empty_sector = sectors.index('', next_empty_sector + 1)
+    if sectors[i] != '': # if the piece is not an empty space
+        sectors[next_empty_sector], sectors[i] = sectors[i], sectors[next_empty_sector] #swapping empty space with the first non-empty sector encountered
+        next_empty_sector = sectors.index('', next_empty_sector + 1) #then updating the position of the next empty sector on the list
     else:
-        continue
+        continue #continues until all empty sectors are pushed to the end, and the non-empty to the front
 
 #Display an AFTER picture of the de-fragmented parts. Print out all the sectors.
-print("AFTER DEFRAGMENTATION:")
+print("\nAFTER DEFRAGMENTATION:")
 print("0                                                                               19")
-after_table = [sectors[i:i+20] for i in range(0, len(sectors), 20)]
+after_table = [sectors[i:i+20] for i in range(0, len(sectors), 20)] # using slice notation to print horizontally 
 print(tabulate(after_table, tablefmt='grid'))
 print("20                                                                              39")
