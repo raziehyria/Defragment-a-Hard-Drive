@@ -25,4 +25,7 @@ easy to follow.
 c. Do the defragmentation process.
 d. Finally, display an AFTER picture of the defragmented parts. Print out of all the
 sectors.
-Initialize the 40 sectors to look like this.
+Initialize the 40 sectors to look like this:
+
+![image](https://user-images.githubusercontent.com/71193841/224560580-dca9e77c-0a1c-4dd6-a6f4-5ce0fd7c38a0.png)
+
